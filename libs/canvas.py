@@ -141,26 +141,28 @@ class Canvas(QWidget):
 
         # Polygon copy moving.
         if Qt.RightButton & ev.buttons():
+            if self.isMultiselectMode():
+                return
             if self.selectedShapesCopy and self.prevPoint:
                 self.overrideCursor(CURSOR_MOVE)
-                for shape in self.selectedShapeCopy:
-                    self.boundedMoveShape(self.shape, pos)
+                self.boundedMoveShapes(self.selectedShapeCopy, pos)
                 self.repaint()
             elif self.selectedShapes:
-                self.selectedShapesCopy = [c.copy() for c in self.selectedShape]
+                self.selectedShapesCopy = [c.copy() for c in self.selectedShapes]
                 self.repaint()
             return
 
         # Polygon/Vertex moving.
         if Qt.LeftButton & ev.buttons():
+            if self.isMultiselectMode():
+                return
             if self.selectedVertex():
                 self.boundedMoveVertex(pos)
                 self.shapeMoved.emit()
                 self.repaint()
             elif self.selectedShapes and self.prevPoint:
                 self.overrideCursor(CURSOR_MOVE)
-                for shape in self.selectedShapes:
-                    self.boundedMoveShape(shape, pos)
+                self.boundedMoveShapes(self.selectedShapes, pos)
                 self.shapeMoved.emit()
                 self.repaint()
             return
@@ -360,6 +362,9 @@ class Canvas(QWidget):
         shape.moveVertexBy(rindex, rshift)
         shape.moveVertexBy(lindex, lshift)
 
+    def boundedMoveShapes(self, shapes, pos):
+        return all([self.boundedMoveShape(shape, pos) for shape in shapes])
+
     def boundedMoveShape(self, shape, pos):
         if self.outOfPixmap(pos):
             return False  # No need to move
@@ -414,12 +419,14 @@ class Canvas(QWidget):
     def boundedShiftShape(self, shapes):
         # Try to move in one direction, and if it fails in another.
         # Give up if both fail.
+        if self.isMultiselectMode():
+            return
         point = shapes[0][0]
         offset = QPointF(2.0, 2.0)
         self.calculateOffsets(shapes[0], point)
         self.prevPoint = point
-        if not self.boundedMoveShape(shapes, point - offset):
-            self.boundedMoveShape(shapes, point + offset)
+        if not self.boundedMoveShapes(shapes, point - offset):
+            self.boundedMoveShapes(shapes, point + offset)
 
     def paintEvent(self, event):
         if not self.pixmap:

@@ -900,7 +900,7 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>jade</name>
+		<name>maxim</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
@@ -912,7 +912,7 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>jade</name>
+		<name>maxim</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
@@ -924,7 +924,7 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>jade</name>
+		<name>maxim</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
@@ -936,7 +936,7 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>jade</name>
+		<name>maxim</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
@@ -1080,15 +1080,15 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>donskoitabak</name>
+		<name>play</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
 			<xmin>2128</xmin>
-			<ymin>3383</ymin>
+			<ymin>3384</ymin>
 			<xmax>2252</xmax>
-			<ymax>3584</ymax>
+			<ymax>3585</ymax>
 		</bndbox>
 	</object>
 	<object>
@@ -1398,9 +1398,9 @@
 		<difficult>0</difficult>
 		<bndbox>
 			<xmin>400</xmin>
-			<ymin>2395</ymin>
+			<ymin>2394</ymin>
 			<xmax>533</xmax>
-			<ymax>2605</ymax>
+			<ymax>2604</ymax>
 		</bndbox>
 	</object>
 	<object>
@@ -1500,7 +1500,7 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>pack</name>
+		<name>java</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
@@ -1512,7 +1512,7 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>pack</name>
+		<name>java</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
